@@ -1,26 +1,126 @@
 <!doctype html>
 <html>
-    <head><link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"></head>
-    <body>
-        <div class="container">
-            <h1>Simple image search engine</h1>
-            <form method="POST" enctype="multipart/form-data">
-                <input type="file" name="query_img"><br>
-                <input type="submit">
-            </form>
-            <h2>Query:</h2>
-            {% if query_path %}
-            <img src="{{ query_path }}" width="300px">
-            {% endif %}
-            <h2>Results:</h2>
-            {% for score in scores %}
-            <figure style="float: left; margin-right: 20px; margin-bottom: 20px;">
-                <img src="{{ score[1] }}" height="200px">
-                <figcaption>{{ score[0] }}</figcaption>
-            </figure>
-            {% endfor %}
-        </div>
-    </body>
+    <head>
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.4.1/css/simple-line-icons.css" />
+      <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@200&display=swap" rel="stylesheet" />
+      <link href="https://fonts.googleapis.com/css2?family=Damion&display=swap" rel="stylesheet">
+
+<head>
+  <style>
+  
+div {
+  height: 10em;
+  margin: 2em;
+}
+h1{
+  color: rgb(118, 124, 129);
+}
+.p {
+  color: white;
+  font-size: 45pt;
+}
+h2{
+  color: rgb(14, 126, 134);
+}
+.noselect {
+  -webkit-touch-callout: none;
+    -webkit-user-select: none;
+     -khtml-user-select: none;
+       -moz-user-select: none;
+        -ms-user-select: none;
+            user-select: none;
+		-webkit-tap-highlight-color: transparent;
+}
+
+button {
+	width: 150px;
+	height: 50px;
+	cursor: pointer;
+	background: #6dd6d1;
+	border: none;
+	border-radius: 10px;
+	box-shadow: 0px 10px 25px #57aba7, 0px -10px 25px #a6fffa, inset 0px -5px 10px #57aba7, inset 0px 5px 10px #a6fffa;
+	font-family: 'serif', cursive;
+	color: white;
+	font-size: 20px;
+	transition: 500ms;
+}
+
+button:hover {
+		border: 2px solid #6dd6d1;
+	animation: hueRotation 2s linear infinite;
+}
+
+@keyframes hueRotation {
+	to {filter: hue-rotate(360deg);}
+}
+
+button:focus {
+	outline: none;
+}
+    
+    
+    
+.button1 {
+	width: 150px;
+	height: 50px;
+	cursor: pointer;
+	background: #6dd6d1;
+	border: none;
+	border-radius: 10px;
+	box-shadow: 0px 10px 25px #57aba7, 0px -10px 25px #a6fffa, inset 0px -5px 10px #57aba7, inset 0px 5px 10px #a6fffa;
+	font-family: 'serif', cursive;
+	color: white;
+	font-size: 16px;
+	transition: 500ms;
+
+}
+
+.button1:hover {
+		border: 2px solid #6dd6d1;
+	animation: hueRotation 2s linear infinite;
+}
+
+@keyframes hueRotation {
+	to {filter: hue-rotate(360deg);}
+}
+
+.button1:focus {
+	outline: none;
+
+}
+.button1::-webkit-file-upload-button {
+    visibility: hidden;
+}
+.button1::before {
+    content:'  choisie une image';
+
+  }
+    </style>
+      </head>
+          <body style="background-color:#6dd6d1">
+            <div>
+                <h1 class="p">Find ME</h1>
+                <form method="POST" enctype="multipart/form-data">
+                  <input type="file" name="query_img" class="button1"><br>
+                  <br>
+                  <br>
+                   <button type="submit">Envoyer</button>
+
+                </form>
+                <h2>Votre image:</h2>
+                {% if query_path %}
+                <img src="{{ query_path }}" width="300px">
+                {% endif %}
+                <h2>Les images trouvés:</h2>
+                {% for score in scores %}
+                <figure style="float: left; margin-right: 20px; margin-bottom: 20px;">
+                    <img src="{{ score[1] }}" height="200px">
+                    <figcaption>{{ score[0] }}</figcaption>
+                </figure>
+                {% endfor %}
+            </div>
+        </body>
 </html>
 
 
